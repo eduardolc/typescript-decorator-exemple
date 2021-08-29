@@ -1,15 +1,15 @@
 import {Decripter, Encripter} from './encripyt'
 
 export class Produto {
-    @Encripter
+    @Encripter()
     nome: string;
-    @Encripter
+    @Encripter()
     descricao: string;
 }
 
 export class ProdutoResponse {
-    @Decripter
+    @Decripter()
     nome: string;
-    @Decripter
+    @Decripter()
     descricao: string;
 }

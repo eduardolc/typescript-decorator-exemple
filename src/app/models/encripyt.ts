@@ -1,36 +1,39 @@
-export function Encripter(target: any, key: string) {
-    //const newKey = `_${key}`;
-    const newKey = target[key];
+export function Encripter() {
+    return function (target: Object, key: string | symbol) {
+        let val = target[key];
 
-    Object.defineProperty(target, key, {
+        const getter = () => {
+            return val;
+        };
+        const setter = (next) => {
+            val = btoa(next);
+        };
 
-        get() {
-            //console.log(`Get: ${key} => ${this[newKey]}`);
-            return this[newKey];
-        },
-        set(newVal) {
-            //console.log(`Set: ${key} => ${newVal}`);
-            this[newKey] = btoa(newVal);
-        },
-        enumerable: true,
-        configurable: true
-    });
+        Object.defineProperty(target, key, {
+            get: getter,
+            set: setter,
+            enumerable: true,
+            configurable: true
+        });
+    }
 }
 
-export function Decripter(target: any, key: string) {
-    const newKey = `_${key}`;
-    
-    Object.defineProperty(target, key, {
+export function Decripter() {
+    return function (target: Object, key: string | symbol) {
+        let val = target[key];
 
-        get() {
-            //console.log(`Get: ${key} => ${this[newKey]}`);
-            return this[newKey];
-        },
-        set(newVal) {
-            //console.log(`Set: ${key} => ${newVal}`);
-            this[newKey] = atob(newVal);
-        },
-        enumerable: true,
-        configurable: true
-    });
+        const getter = () => {
+            return val;
+        };
+        const setter = (next) => {
+            val = atob(next);
+        };
+
+        Object.defineProperty(target, key, {
+            get: getter,
+            set: setter,
+            enumerable: true,
+            configurable: true
+        });
+    }
 }
