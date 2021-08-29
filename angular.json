@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "decorator-exemplo"
+    }
+  },
+  "defaultProject": "decorator-exemplo",
+  "cli": {
+    "analytics": "943173a3-75f5-4ef9-abe7-dd330e45afeb"
+  }
 }
